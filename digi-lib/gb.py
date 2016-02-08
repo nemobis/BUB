@@ -79,7 +79,7 @@ def verify_id(Id_string):
     else:
         book_info = r.json()
         if book_info['accessInfo']['viewability'] != "ALL_PAGES":
-            return 2
+            return 3
         else:
             return 0
 
@@ -97,7 +97,7 @@ def metadata(Id):
         return 10
     book_info = r.json()
     if book_info['accessInfo']['viewability'] != "ALL_PAGES":
-        return 2
+        return 3
     keys1 = book_info['volumeInfo'].keys()
     return dict(
         image_url = book_info['volumeInfo']['imageLinks']['small'] if 'small' in book_info['volumeInfo']['imageLinks'].keys() else "",

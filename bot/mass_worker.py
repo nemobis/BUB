@@ -453,7 +453,11 @@ def manager(q_mass_worker):
                 log.flush()
                 time.sleep(seconds_until_google_quota_refresh())
                 q_mass_worker.add(book_id)
-                continue    
+                continue
+            elif metadata_status == 3:
+                log.write("%s  %s  Book download restricted\n" %(datetime.now(), book_id))
+                log.flush()
+                continue
             elif metadata_status == 2:
                 log.write("%s  %s  Not Public Domain\n" %(datetime.now(), book_id))
                 log.flush()
